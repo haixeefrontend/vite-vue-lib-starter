@@ -18,6 +18,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     dts({
+      entryRoot: 'src',
       afterBuild() {
         // Publint requires a .d.cts type definition file
         // https://publint.dev/rules#export_types_invalid_format
@@ -29,6 +30,7 @@ export default defineConfig({
     lib: {
       entry: 'src/index.ts',
       name: getPackageName(),
+      formats: ['es', 'cjs', 'umd'],
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
@@ -39,5 +41,6 @@ export default defineConfig({
         },
       },
     },
+    minify: false,
   },
 })
